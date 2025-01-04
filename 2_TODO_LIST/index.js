@@ -93,6 +93,7 @@ function listPendingTasks(){
     }
 }
 
+//calling all the functions
 
 addTask("angular");
 addTask("javascript");
