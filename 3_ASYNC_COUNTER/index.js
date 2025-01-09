@@ -44,7 +44,11 @@ function Decrement(){
     console.log(counter);
     new_value=parseInt(counter)-parseInt(global_value);
 
-     document.getElementById("counter").innerText=new_value;
+    document.getElementById("counter").innerText=new_value;
 }
+
+
+
+
 
 
