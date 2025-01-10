@@ -2,8 +2,9 @@
   "name": "quiz_app",
   "version": "1.0.0",
   "main": "index.js",
+  "type":"module",
   "scripts": {
-    "dev": "node Category.js && node quiz.js"
+    "dev": "node ./Backend/quiz.js "
   },
   "keywords": [],
   "author": "",
