@@ -1,0 +1,17 @@
+{
+  "name": "task_management_http_server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type":"module",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "express": "^4.21.2"
+  }
+}
