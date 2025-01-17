@@ -4,15 +4,12 @@ const app=express();
 const port=3000;
 const tasks=require("./routes/tasks.js");
 const connectdb = require("./db/connect.js");
-const { config } = require("dotenv");
 require("dotenv").config();
 
 //middleware to access the the info from the client...
 app.use(express.json());
 
-app.get("/hello",(req,res)=>{
-    res.json("Hello,Welcome to Task-Manager")
-})
+app.use(express.static("/Users/basanireddy/Documents/2025/JS-PROJECTS/TASK_MANAGER/public"));
 
 app.use("/v1/tasks",tasks);
 
