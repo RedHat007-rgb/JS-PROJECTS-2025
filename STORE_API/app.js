@@ -6,6 +6,10 @@ const router=require("./routes/tasks.js")
 const app=express();
 const port=3000;
 const notFound=require("./middlewares/notFOund.js")
+//app.use("/v1/products",router);
+app.get("/",(req,res)=>{
+    res.send('<h1>STORE API</h1><a href="/v1/products">Product API</a>')
+})
 app.use("/v1/products",router);
 app.use(notFound);
 
