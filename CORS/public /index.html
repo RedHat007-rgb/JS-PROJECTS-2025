@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum Calculator</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        async function test() {
+           
+            const a = parseFloat(document.getElementById("a").value);
+            const b = parseFloat(document.getElementById("b").value);
+                const response = await axios.post("http://localhost:3001/sum", {
+                    a: a,
+                    b: b
+                })
+                document.getElementById("answer").innerText = `Sum: ${response.data.answer}`; 
+        }
+    </script>
+</head>
+<body>
+    <h1>Sum Calculator</h1>
+    <input id="a" type="number" placeholder="Enter first value" />
+    <input id="b" type="number" placeholder="Enter second value" />
+    <button onclick="test()">Send Values</button>
+    <p id="answer"></p>
+</body>
+</html>
