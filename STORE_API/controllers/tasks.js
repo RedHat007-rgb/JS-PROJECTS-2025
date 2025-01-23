@@ -35,26 +35,29 @@ const getAllProducts=async (req,res)=>{
             "=":"$eq",
             "<=":"$lte",
             "<":"$lt",
-        }
-        const regex= /\b>|>=|<=|<|=\b/g;
-        let filters=numericfields.replace(regex,(match)=>`-${operator_map[match]}-`)
-        
-    }
-
-
+        } 
+        const regex=/\b(>|<|>=|<=|=)\b/g
+        let filters=numericfields.replace(regex,(match)=>
+        `-${operator_map[match]}-`
+        )
+        const options=["rating","price"];
+        filters=filters.split(",").forEach((item) => {
+        const [field,operator,value]=item.split("-")
+            if(options.includes(field)){
+                queryObject[field]={[operator]:Number(value)}
+            }
+    });
     const page=Number(req.query.page)||1;
     const limit=Number(req.query.limit)||8;
     const skip=(page-1)*limit;
     result=result.skip(skip).limit(limit);
-     
     const Products=await result;
-    
     res.json({
         Products,
         nbHits:Products.length
     }).status(200);
 }
-
+}
 
 const getProductStatic=async (req,res)=>{
     
@@ -65,4 +68,4 @@ const getProductStatic=async (req,res)=>{
         nbHits:Products.length
     }).status(200);
 }
-module.exports={getAllProducts,getProductStatic};
+module.exports={getAllProducts,getProductStatic}
