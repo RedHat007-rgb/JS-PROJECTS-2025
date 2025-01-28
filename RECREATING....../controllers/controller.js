@@ -1,9 +1,10 @@
 const userModel=require("/Users/basanireddy/Documents/2025/JS-PROJECTS/RECREATING....../model/model.js")
-const signup=(req,res)=>{
+const jwt=require("jsonwebtoken");
+const signup=async (req,res)=>{
     const name=req.body.name;
     const email=req.body.email;
     const password=req.body.password;
-    userModel.create({
+    await userModel.create({
         name:name,
         email:email,
         password:password
@@ -12,8 +13,21 @@ const signup=(req,res)=>{
 
 }
 
-const signin=(req,res)=>{
-     res.status(200).send("Hello world....")
+const signin=async (req,res)=>{
+    const email=req.body.email;
+    const password=req.body.password;
+    const user=await userModel.findOne({
+        email:email,
+        password:password
+    })
+    console.log(user);
+    if(user){
+        const token=jwt.sign({
+            email
+        },process.env.JWT_SECRET)
+        res.setHeader("cookie",token);
+        res.status(200).send("signed in successfully")
+    }
 }
 
 const todo=(req,res)=>{
