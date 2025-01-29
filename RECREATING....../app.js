@@ -13,9 +13,8 @@ app.use("/",router);
 
 app.listen(port,async()=>{
     try{
-        console.log(port);
     await connect();
-    console.log(`Server is listening to ${port}`)
+    console.log(`Server is listening to ${port}.........`)
     }catch(e){
         console.log(e);
     }
